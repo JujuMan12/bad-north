@@ -17,7 +17,7 @@ public class CameraRotation : MonoBehaviour
 
     private void DragCamera()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetButton("Camera Rotation"))
         {
             float dragX = Input.GetAxis("Mouse Y") * dragSpeed;
             float dragY = Input.GetAxis("Mouse X") * dragSpeed;
