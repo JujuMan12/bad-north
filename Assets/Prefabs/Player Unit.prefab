@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4927768930658851275}
   - component: {fileID: 1027086331}
   - component: {fileID: 8461506094497808467}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Player Unit
   m_TagString: PlayerUnit
   m_Icon: {fileID: 0}
@@ -154,5 +154,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}

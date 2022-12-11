@@ -10,6 +10,7 @@ public class ShipMovement : MonoBehaviour
     [Header("Ship")]
     [SerializeField] private float movementSpeed = 0.2f;
     [SerializeField] private UnitMovement[] units;
+    [SerializeField] private GameObject shipModel;
 
     private void FixedUpdate()
     {
@@ -41,5 +42,7 @@ public class ShipMovement : MonoBehaviour
             unit.navMeshAgent.enabled = true;
             unit.navTarget = targetTile.tilePositions[0]; //TODO
         }
+
+        shipModel.SetActive(false);
     }
 }

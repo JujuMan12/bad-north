@@ -18,4 +18,12 @@ public class UnitMovement : MonoBehaviour
             navMeshAgent.destination = navTarget.position;
         }
     }
+
+    private void OnMouseOver()
+    {
+        if (Input.GetButtonDown("Select Squad") && squadController)
+        {
+            squadController.SelectThisSquad();
+        }
+    }
 }

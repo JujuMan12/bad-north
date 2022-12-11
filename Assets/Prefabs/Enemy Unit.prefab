@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navTarget: {fileID: 0}
+  squadController: {fileID: 0}
   navMeshAgent: {fileID: 5858631769597409216}
 --- !u!114 &-4628454708053980263
 MonoBehaviour:
@@ -153,5 +154,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}

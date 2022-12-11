@@ -167,6 +167,7 @@ MonoBehaviour:
   - {fileID: 3285633286313650033}
   - {fileID: 7349894996605895809}
   - {fileID: 1541879009407520191}
+  shipModel: {fileID: 960311167997727209}
 --- !u!1001 &1998185096270728705
 PrefabInstance:
   m_ObjectHideFlags: 0

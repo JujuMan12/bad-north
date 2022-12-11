@@ -162,6 +162,11 @@ MonoBehaviour:
   - {fileID: 2405115505995525280}
   - {fileID: 8292802597839603304}
   - {fileID: 5868299978017941053}
+  sprite: {fileID: 5032618499313096565}
+  defaultOpacity: 0.25
+  hoverOpacity: 0.75
+  defaultColor: {r: 1, g: 1, b: 1, a: 0.2509804}
+  highlightColor: {r: 1, g: 1, b: 0, a: 0.25}
 --- !u!1 &2163514116126536167
 GameObject:
   m_ObjectHideFlags: 0

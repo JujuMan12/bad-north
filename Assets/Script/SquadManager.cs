@@ -23,7 +23,7 @@ public class SquadManager : MonoBehaviour
             SquadController newSquadController = newSquad.GetComponent<SquadController>();
 
             newSquadController.squadManager = this;
-            newSquadController.SetTargetTile(initialTiles[i]);
+            newSquadController.targetTile = initialTiles[i];
         }
     }
 

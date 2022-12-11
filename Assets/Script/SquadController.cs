@@ -5,7 +5,7 @@ using UnityEngine;
 public class SquadController : MonoBehaviour
 {
     [HideInInspector] public SquadManager squadManager;
-    [HideInInspector] private TileComponent targetTile;
+    [HideInInspector] public TileComponent targetTile;
 
     [Header("Squad")]
     [SerializeField] private UnitMovement[] units;
@@ -18,18 +18,32 @@ public class SquadController : MonoBehaviour
         }
     }
 
-    private void OnMouseOver()
+    public void SelectThisSquad()
     {
-        if (Input.GetButtonDown("Select Squad") && squadManager.selectedSquad != this)
-        {
-            squadManager.SelectSquad(this);
-        }
+        squadManager.selectedSquad?.ClearTargetTileHighlight();
+
+        squadManager.SelectSquad(this);
+        HighlightTargetTile();
     }
 
     public void SetTargetTile(TileComponent tile)
     {
+        ClearTargetTileHighlight();
+
         targetTile = tile;
+        HighlightTargetTile();
+
         UpdateNavTarget();
+    }
+
+    public void ClearTargetTileHighlight()
+    {
+        targetTile.SetColor(TileComponent.ColorState.none);
+    }
+
+    public void HighlightTargetTile()
+    {
+        targetTile.SetColor(TileComponent.ColorState.highlight);
     }
 
     public void UpdateNavTarget()
