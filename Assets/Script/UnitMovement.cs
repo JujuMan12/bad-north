@@ -12,7 +12,7 @@ public class UnitMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (navTarget)
+        if (navTarget && navMeshAgent.isOnNavMesh)
         {
             navMeshAgent.destination = navTarget.position;
         }

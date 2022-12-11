@@ -16,6 +16,7 @@ public class UnitCombat : MonoBehaviour
 
     [Header("Stats")]
     [SerializeField] private int maxHealth = 5;
+    [SerializeField] private TMPro.TextMeshPro healthCounter;
     [SerializeField] private int damageMin = 1;
     [SerializeField] private int damageMax = 3;
     [SerializeField] private float hitCooldown = 1f;
@@ -23,6 +24,7 @@ public class UnitCombat : MonoBehaviour
     virtual public void Start()
     {
         healthPoints = maxHealth;
+        healthCounter.text = healthPoints.ToString();
     }
 
     private void FixedUpdate()
@@ -35,7 +37,7 @@ public class UnitCombat : MonoBehaviour
         SetNextTarget();
     }
 
-    private void OnTriggerEnter(Collider collider)
+    private void OnTriggerStay(Collider collider)
     {
         if (collider.CompareTag(opponentTag) && !unitTarget)
         {
@@ -88,6 +90,7 @@ public class UnitCombat : MonoBehaviour
     public void TakeDamage(int damage)
     {
         healthPoints -= damage;
+        healthCounter.text = healthPoints.ToString();
 
         if (healthPoints <= 0f)
         {

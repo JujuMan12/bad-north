@@ -29,7 +29,6 @@ public class HouseManager : MonoBehaviour
 
     private void GameOver()
     {
-        Time.timeScale = 0f;
         GameOverScreen.SetActive(true);
     }
 }
