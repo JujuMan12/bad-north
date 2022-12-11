@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 967791639351793816}
   - component: {fileID: 1027086330}
   - component: {fileID: 4927768930658851275}
+  - component: {fileID: 3158640724190390348}
   - component: {fileID: 1027086331}
   - component: {fileID: 8461506094497808467}
   m_Layer: 0
@@ -99,8 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35503aa9c73bfd94aacdc9d8b57236eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navTarget: {fileID: 0}
-  squadController: {fileID: 0}
   navMeshAgent: {fileID: 1027086331}
 --- !u!114 &4927768930658851275
 MonoBehaviour:
@@ -114,13 +113,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c602e32fa5915245bad3ac273a34245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitMovement: {fileID: 1027086330}
+  unitComponent: {fileID: 0}
   opponentTag: EnemyUnit
-  attackDistance: 2
+  attackDistance: 1
   maxHealth: 5
   damageMin: 1
   damageMax: 3
   hitCooldown: 1
+--- !u!114 &3158640724190390348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5333393395171731562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ee47fb99dde3240a7c2a1658035949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  squadController: {fileID: 0}
+  unitMovement: {fileID: 1027086330}
+  unitCombat: {fileID: 4927768930658851275}
 --- !u!195 &1027086331
 NavMeshAgent:
   m_ObjectHideFlags: 0

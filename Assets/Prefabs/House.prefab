@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2773464332661144338}
   m_Layer: 0
   m_Name: House
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  doors: {fileID: 8582167949550103959}
 --- !u!1 &8629699379594219054
 GameObject:
   m_ObjectHideFlags: 0

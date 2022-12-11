@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         sceneTransition.gameObject.SetActive(true);
     }
 

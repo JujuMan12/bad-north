@@ -6,11 +6,13 @@ public class UnitCombat_Player : UnitCombat
 {
     override public void SetNextTarget()
     {
-        base.SetNextTarget();
-
-        if (!unitTarget)
+        if (CanAttackUnit(unitTarget))
         {
-            unitMovement.squadController?.UpdateNavTarget();
+            AtackTarget(true);
+        }
+        else
+        {
+            unitComponent?.squadController?.UpdateNavTarget();
         }
     }
 }

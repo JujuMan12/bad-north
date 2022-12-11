@@ -5,11 +5,11 @@ using UnityEngine;
 public class ShipMovement : MonoBehaviour
 {
     [HideInInspector] private Vector3 targetPosition;
-    [HideInInspector] private TileComponent targetTile; //TODO: удалить
+    [HideInInspector] private bool unitsDeployed;
 
     [Header("Ship")]
     [SerializeField] private float movementSpeed = 0.2f;
-    [SerializeField] private UnitMovement[] units;
+    [SerializeField] private UnitComponent[] units;
     [SerializeField] private GameObject shipModel;
 
     private void FixedUpdate()
@@ -19,14 +19,13 @@ public class ShipMovement : MonoBehaviour
 
     public void SetCoastalTile(TileComponent tile)
     {
-        targetTile = tile; //TODO: удалить
         targetPosition = tile.transform.position;
         transform.rotation.SetLookRotation(targetPosition - transform.position);
     }
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Tile"))
+        if (collider.CompareTag("Tile") && !unitsDeployed)
         {
             DeployUnits();
         }
@@ -34,13 +33,13 @@ public class ShipMovement : MonoBehaviour
 
     private void DeployUnits()
     {
-        targetPosition = transform.position;
+        unitsDeployed = true;
 
-        foreach (UnitMovement unit in units)
+        foreach (UnitComponent unit in units)
         {
-            unit.enabled = true;
-            unit.navMeshAgent.enabled = true;
-            unit.navTarget = targetTile.tilePositions[0]; //TODO
+            unit.unitMovement.enabled = true;
+            unit.unitMovement.navMeshAgent.enabled = true;
+            unit.unitCombat.enabled = true;
         }
 
         shipModel.SetActive(false);

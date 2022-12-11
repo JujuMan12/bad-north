@@ -8,11 +8,11 @@ public class SquadController : MonoBehaviour
     [HideInInspector] public TileComponent targetTile;
 
     [Header("Squad")]
-    [SerializeField] private UnitMovement[] units;
+    [SerializeField] private UnitComponent[] units;
 
     private void Start()
     {
-        foreach (UnitMovement unit in units)
+        foreach (UnitComponent unit in units)
         {
             unit.squadController = this;
         }
@@ -52,7 +52,7 @@ public class SquadController : MonoBehaviour
         {
             if (units[i])
             {
-                units[i].navTarget = targetTile.tilePositions[i];
+                units[i].unitMovement.SetNavTarget(targetTile.tilePositions[i]);
             }
         }
     }

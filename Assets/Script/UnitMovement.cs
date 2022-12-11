@@ -5,8 +5,7 @@ using UnityEngine.AI;
 
 public class UnitMovement : MonoBehaviour
 {
-    [HideInInspector] public Transform navTarget;
-    [HideInInspector] public SquadController squadController;
+    [HideInInspector] private Transform navTarget;
 
     [Header("Navigation")]
     [SerializeField] public NavMeshAgent navMeshAgent;
@@ -19,11 +18,8 @@ public class UnitMovement : MonoBehaviour
         }
     }
 
-    private void OnMouseOver()
+    public void SetNavTarget(Transform target)
     {
-        if (Input.GetButtonDown("Select Squad") && squadController)
-        {
-            squadController.SelectThisSquad();
-        }
+        navTarget = target;
     }
 }

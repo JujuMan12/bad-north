@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 5021068669165462527}
   - component: {fileID: 5858631769597409216}
   - component: {fileID: -5322673312141219472}
-  - component: {fileID: -4628454708053980263}
   - component: {fileID: 8346004573247125005}
+  - component: {fileID: 218864340148154797}
+  - component: {fileID: -4315598457313102771}
   m_Layer: 2
   m_Name: Enemy Unit
   m_TagString: EnemyUnit
@@ -121,28 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35503aa9c73bfd94aacdc9d8b57236eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navTarget: {fileID: 0}
-  squadController: {fileID: 0}
   navMeshAgent: {fileID: 5858631769597409216}
---- !u!114 &-4628454708053980263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8823300768402826991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0880c929f397f6f4d89b9bc89de0185f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unitMovement: {fileID: -5322673312141219472}
-  opponentTag: PlayerUnit
-  attackDistance: 2
-  maxHealth: 5
-  damageMin: 1
-  damageMax: 3
-  hitCooldown: 1
 --- !u!135 &8346004573247125005
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -156,3 +136,37 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &218864340148154797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8823300768402826991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ee47fb99dde3240a7c2a1658035949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  squadController: {fileID: 0}
+  unitMovement: {fileID: -5322673312141219472}
+  unitCombat: {fileID: -4315598457313102771}
+--- !u!114 &-4315598457313102771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8823300768402826991}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac03af388e3bcc4788ba168a7a716e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitComponent: {fileID: 0}
+  opponentTag: PlayerUnit
+  attackDistance: 1
+  maxHealth: 5
+  damageMin: 1
+  damageMax: 3
+  hitCooldown: 1

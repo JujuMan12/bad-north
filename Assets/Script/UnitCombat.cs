@@ -5,13 +5,14 @@ using UnityEngine;
 public class UnitCombat : MonoBehaviour
 {
     [HideInInspector] private int healthPoints;
+    [HideInInspector] public UnitComponent unitComponent;
     [HideInInspector] protected UnitCombat unitTarget;
+    [HideInInspector] protected HouseComponent houseTarget;
     [HideInInspector] private float timeToHit;
 
     [Header("Targeting")]
-    [SerializeField] protected UnitMovement unitMovement;
     [SerializeField] private string opponentTag = "EnemyUnit";
-    [SerializeField] private float attackDistance = 2f;
+    [SerializeField] private float attackDistance = 1f;
 
     [Header("Stats")]
     [SerializeField] private int maxHealth = 5;
@@ -19,7 +20,7 @@ public class UnitCombat : MonoBehaviour
     [SerializeField] private int damageMax = 3;
     [SerializeField] private float hitCooldown = 1f;
 
-    private void Start()
+    virtual public void Start()
     {
         healthPoints = maxHealth;
     }
@@ -44,32 +45,42 @@ public class UnitCombat : MonoBehaviour
 
     virtual public void SetNextTarget()
     {
-        if (unitTarget)
+        if (CanAttackUnit(unitTarget))
         {
-            AtackTarget();
+            AtackTarget(true);
         }
     }
 
-    private void AtackTarget()
+    protected void AtackTarget(bool targetIsUnit)
     {
-        if (CanHitTarget())
+        Transform target = targetIsUnit ? unitTarget.transform : houseTarget.doors;
+
+        if (CanHitTarget(target))
         {
-            unitMovement.navTarget = transform;
+            unitComponent.unitMovement.SetNavTarget(transform);
             if (timeToHit <= 0f)
             {
-                HitTarget();
+                HitTarget(targetIsUnit);
             }
         }
         else
         {
-            unitMovement.navTarget = unitTarget.transform;
+            unitComponent.unitMovement.SetNavTarget(target);
         }
     }
 
-    private void HitTarget()
+    private void HitTarget(bool targetIsUnit)
     {
         int damage = Random.Range(damageMin, damageMax + 1);
-        unitTarget.TakeDamage(damage);
+
+        if (targetIsUnit)
+        {
+            unitTarget.TakeDamage(damage);
+        }
+        else
+        {
+            houseTarget.TakeDamage(damage);
+        }
 
         timeToHit = hitCooldown;
     }
@@ -89,8 +100,13 @@ public class UnitCombat : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private bool CanHitTarget()
+    protected bool CanAttackUnit(UnitCombat unit)
     {
-        return Vector3.Distance(transform.position, unitTarget.transform.position) <= attackDistance;
+        return unitTarget && unitTarget.enabled;
+    }
+
+    private bool CanHitTarget(Transform target)
+    {
+        return Vector3.Distance(transform.position, target.position) <= attackDistance;
     }
 }

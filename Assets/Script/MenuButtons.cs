@@ -20,7 +20,6 @@ public class MenuButtons : MonoBehaviour
     public void RestartGame()
     {
         //ButtonSoundEffect.Play();
-        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
 
