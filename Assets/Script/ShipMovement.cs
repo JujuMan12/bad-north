@@ -20,7 +20,7 @@ public class ShipMovement : MonoBehaviour
     public void SetCoastalTile(TileComponent tile)
     {
         targetPosition = tile.transform.position;
-        transform.rotation.SetLookRotation(targetPosition - transform.position);
+        transform.LookAt(targetPosition);
     }
 
     private void OnTriggerEnter(Collider collider)
